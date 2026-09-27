@@ -1,0 +1,21 @@
+import{r as c,D as g,u as f,s as n,j as e,c as v}from"./chunk-DfQkJ5ZV.js";function b(t,a){return t>=a.criticalAtRatio?"critical":t>=a.warnAtRatio?"warn":"ok"}function i(t){return t>=1e6?`${(t/1e6).toFixed(2)}M`:t>=1e3?`${(t/1e3).toFixed(1)}k`:`${t}`}function y(){const[t,a]=c.useState(null),[o,p]=c.useState(g),[m,d]=c.useState(!0);f(o.theme),c.useEffect(()=>{(async()=>{const[s,h]=await Promise.all([n({type:"GET_SETTINGS"}),n({type:"GET_LATEST_SNAPSHOT"})]);s&&p(s),a(h??null),d(!1)})()},[]);const u=()=>{typeof chrome<"u"&&chrome.runtime?.openOptionsPage&&chrome.runtime.openOptionsPage()},x=async()=>{const s={...o,overlayEnabled:!o.overlayEnabled};p(s),await n({type:"SET_SETTINGS",payload:s})};return e.jsxs("div",{className:"cm-popup",children:[e.jsxs("header",{className:"cm-popup-header",children:[e.jsx("span",{className:"cm-popup-logo","aria-hidden":"true",children:"◆"}),e.jsx("h1",{children:"Claude Meter"})]}),m?e.jsx("p",{className:"cm-popup-muted",children:"Loading…"}):t?e.jsx(j,{snapshot:t,settings:o}):e.jsxs("div",{className:"cm-popup-empty",children:[e.jsx("p",{children:"No active claude.ai conversation detected yet."}),e.jsx("p",{className:"cm-popup-muted",children:"Open a chat on claude.ai and it will appear here automatically."})]}),e.jsxs("div",{className:"cm-popup-actions",children:[e.jsxs("label",{className:"cm-popup-toggle",children:[e.jsx("input",{type:"checkbox",checked:o.overlayEnabled,onChange:x}),"On-page overlay"]}),e.jsx("button",{className:"cm-popup-primary",onClick:u,children:"Open dashboard"})]}),e.jsx("p",{className:"cm-popup-footnote",children:"All estimates are computed locally. Nothing leaves your device."}),e.jsx("style",{children:N})]})}function j({snapshot:t,settings:a}){const o=b(t.contextUsedRatio,a.thresholds),p=Math.round(t.contextUsedRatio*100);return e.jsxs("div",{className:"cm-popup-summary",children:[e.jsx("h2",{title:t.title??void 0,children:t.title??"Current conversation"}),e.jsx("div",{className:`cm-popup-bar cm-status-${o}`,children:e.jsx("div",{className:"cm-popup-bar-fill",style:{width:`${Math.min(100,p)}%`}})}),e.jsxs("div",{className:"cm-popup-stats",children:[e.jsx(r,{label:"Context used",value:`${p}%`}),e.jsx(r,{label:"Est. tokens",value:`${i(t.estimatedContextTokens)} / ${i(t.contextWindowTokens)}`}),e.jsx(r,{label:"Messages",value:`${t.messageCount}`})]})]})}function r({label:t,value:a}){return e.jsxs("div",{className:"cm-popup-stat",children:[e.jsx("div",{className:"cm-popup-stat-value",children:a}),e.jsx("div",{className:"cm-popup-stat-label",children:t})]})}const N=`
+  .cm-popup { width: 300px; padding: 14px 16px 16px; }
+  .cm-popup-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .cm-popup-header h1 { font-size: 15px; margin: 0; }
+  .cm-popup-logo { color: var(--cm-accent); font-size: 16px; }
+  .cm-popup-muted { color: var(--cm-text-muted); font-size: 12.5px; }
+  .cm-popup-empty { background: var(--cm-bg-elevated); border-radius: var(--cm-radius); padding: 12px; margin-bottom: 10px; }
+  .cm-popup-summary h2 { font-size: 13px; margin: 0 0 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .cm-popup-bar { height: 8px; border-radius: 6px; background: var(--cm-bg-elevated); overflow: hidden; margin-bottom: 10px; }
+  .cm-popup-bar-fill { height: 100%; background: var(--cm-accent); }
+  .cm-status-warn .cm-popup-bar-fill { background: var(--cm-warn); }
+  .cm-status-critical .cm-popup-bar-fill { background: var(--cm-critical); }
+  .cm-popup-stats { display: flex; justify-content: space-between; margin-bottom: 12px; }
+  .cm-popup-stat-value { font-size: 14px; font-weight: 600; }
+  .cm-popup-stat-label { font-size: 10.5px; color: var(--cm-text-muted); }
+  .cm-popup-actions { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-top: 10px; border-top: 1px solid var(--cm-border); }
+  .cm-popup-toggle { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+  .cm-popup-primary { background: var(--cm-accent); color: white; border: none; border-radius: 8px; padding: 7px 12px; font-size: 12.5px; cursor: pointer; }
+  .cm-popup-footnote { font-size: 10.5px; color: var(--cm-text-muted); margin: 10px 0 0; }
+`,l=document.getElementById("root");l&&v(l).render(e.jsx(c.StrictMode,{children:e.jsx(y,{})}));
+//# sourceMappingURL=popup-DCMfDNXb.js.map
